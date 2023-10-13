@@ -673,6 +673,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541929697}
   m_CullTransparentMesh: 1
+--- !u!1 &575351727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575351728}
+  - component: {fileID: 575351729}
+  m_Layer: 0
+  m_Name: MinigameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &575351728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575351727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &575351729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575351727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc0364fc4234634e97d1cefa309047d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniGameNumber: 1
+  manager: {fileID: 991177734}
 --- !u!1 &844920234
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +840,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
+    IsPlayingMinigame: 1
     CurrentBidAmount: 0
   Player_Two:
     PlayerToken: {fileID: 1651400562}
@@ -802,6 +849,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
+    IsPlayingMinigame: 0
     CurrentBidAmount: 0
   Player_Three:
     PlayerToken: {fileID: 1949472953}
@@ -810,6 +858,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
+    IsPlayingMinigame: 1
     CurrentBidAmount: 0
   Player_Four:
     PlayerToken: {fileID: 1130783273}
@@ -818,6 +867,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
+    IsPlayingMinigame: 1
     CurrentBidAmount: 0
   Board: {fileID: 414943407}
   PlayerNumberIndicatorBox: {fileID: 1804816780}
@@ -2490,3 +2540,4 @@ SceneRoots:
   - {fileID: 1130783273}
   - {fileID: 1218188989}
   - {fileID: 535104695}
+  - {fileID: 575351728}

@@ -15,6 +15,6 @@ public class StoredPlayerInformation
     public int TotalMoney = 500;
 
     public bool HasRolledThisTurn;
-
+    public bool IsPlayingMinigame;
     public int CurrentBidAmount = 0;
 }
