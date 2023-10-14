@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     [Range(1, 4)]
     public int CurrentTurn = 1;
     //This here is the player information. It stores every value relating to a player.
-    public StoredPlayerInformation Player_One;
-    public StoredPlayerInformation Player_Two;
-    public StoredPlayerInformation Player_Three;
-    public StoredPlayerInformation Player_Four;
+    [SerializeField] public StoredPlayerInformation Player_One;
+    [SerializeField] public StoredPlayerInformation Player_Two;
+    [SerializeField] public StoredPlayerInformation Player_Three;
+    [SerializeField] public StoredPlayerInformation Player_Four;
 
     [Header("Refrences")]
     //Refrences the board script, not the sprite
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject BiddingOnlyUI;
     //UI that is only in the Board Phase
     [SerializeField] private GameObject BoardOnlyUI;
+    [SerializeField] private GameObject Non_MinigameStuff;
 
     [Header("States")]
     public GameStates CurrentGameState;
@@ -64,6 +65,17 @@ public class GameManager : MonoBehaviour
             MovePlayerSpaces(Player_Four, 1);
         }
         */
+
+
+        /*if (Input.GetKeyDown(KeyCode.I))
+        {
+            Minigames_EvenSpaces();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Minigames_OddSpaces();
+        }*/
         #endregion
 
         // Sets the text for the player box
@@ -97,6 +109,8 @@ public class GameManager : MonoBehaviour
         //Sets the specific UI to activate deppending on game state
         BiddingOnlyUI.SetActive(CurrentGameState == GameStates.Bidding);
         BoardOnlyUI.SetActive(CurrentGameState == GameStates.Board);
+
+        Non_MinigameStuff.SetActive(CurrentGameState != GameStates.Minigame);
         #endregion
 
         if (CurrentRound % 5 == 0)
@@ -118,6 +132,11 @@ public class GameManager : MonoBehaviour
         {
             CurrentTurn = 1;
             CurrentRound++;
+
+            if (!(CurrentRound % 5 == 0))
+            {
+                StartMinigame();
+            }
 
             Player_One.HasRolledThisTurn = false;
             Player_Two.HasRolledThisTurn = false;
@@ -305,6 +324,81 @@ public class GameManager : MonoBehaviour
         {
             Player_Four.CurrentShares++;
             Player_Four.TotalMoney -= Player_Four.CurrentBidAmount;
+        }
+    }
+
+    #endregion
+
+    #region Minigame Functions
+
+    void StartMinigame()
+    {
+        int RandomMinigameChoosingType = Random.Range(0, 2);
+        if (RandomMinigameChoosingType == 0)
+        {
+            Minigames_OddSpaces();
+        }
+        else if(RandomMinigameChoosingType == 1)
+        {
+            Minigames_EvenSpaces();
+        }
+    }
+
+    void Minigames_OddSpaces()
+    {
+        if (Player_One.OnSpot != 1)
+        {
+            if (Player_One.OnSpot % 2 == 1)
+            {
+                Player_One.IsPlayingMinigame = true;
+            }
+        }
+
+        if (Player_Two.OnSpot != 1)
+        {
+            if (Player_Two.OnSpot % 2 == 1)
+            {
+                Player_Two.IsPlayingMinigame = true;
+            }
+        }
+
+        if (Player_Three.OnSpot != 1)
+        {
+            if (Player_Three.OnSpot % 2 == 1)
+            {
+                Player_Three.IsPlayingMinigame = true;
+            }
+        }
+
+        if (Player_Four.OnSpot != 1)
+        {
+            if (Player_Four.OnSpot % 2 == 1)
+            {
+                Player_Four.IsPlayingMinigame = true;
+            }
+        }
+    }
+
+    public void Minigames_EvenSpaces()
+    {
+        if (Player_One.OnSpot % 2 == 0)
+        {
+            Player_One.IsPlayingMinigame = true;
+        }
+
+        if (Player_Two.OnSpot % 2 == 0)
+        {
+            Player_Two.IsPlayingMinigame = true;
+        }
+
+        if (Player_Three.OnSpot % 2 == 0)
+        {
+            Player_Three.IsPlayingMinigame = true;
+        }
+
+        if (Player_Four.OnSpot % 2 == 0)
+        {
+            Player_Four.IsPlayingMinigame = true;
         }
     }
 

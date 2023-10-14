@@ -15,6 +15,14 @@ public class MinigameManager : MonoBehaviour
     {
         StartMiniGame();
     }
+
+    private void Update()
+    {
+        if (SceneManager.loadedSceneCount == 1)
+        {
+            EndMinigame();
+        }
+    }
     void StartMiniGame()
     {
         if (manager.Player_One.IsPlayingMinigame == true)
@@ -40,6 +48,11 @@ public class MinigameManager : MonoBehaviour
         //players.Add("Player 1");
         //players.Add("Player 2");
 
-        SceneManager.LoadScene("MiniGame" + miniGameNumber);
+        SceneManager.LoadSceneAsync("MiniGame" + miniGameNumber);
+    }
+
+    public void EndMinigame()
+    {
+        FindObjectOfType<GameManager>().CurrentGameState = GameStates.Board;
     }
 }
