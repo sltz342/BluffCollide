@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenuAreas/Main Menu.unity
+    guid: e79e9ba43175e994e9d7c622690d09d4
   - enabled: 1
     path: Assets/Scenes/Board Scene.unity
     guid: c5ca9f8b749d1cd42a63a3260ddbb38c
@@ -15,12 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MiniGame1.unity
     guid: 71a38b32dd9fa6344817b518e662331f
   - enabled: 1
-    path: Assets/Scenes/MainMenuAreas/Main Menu.unity
-    guid: e79e9ba43175e994e9d7c622690d09d4
+    path: Assets/Scenes/MainMenuAreas/Game Credits.unity
+    guid: 2e67ec33e1294ee4b835d95400adcc7e
   - enabled: 1
     path: Assets/Scenes/MainMenuAreas/Game Instructions.unity
-    guid: 3253dc0b653871f47b8578345429460f
+    guid: 6e0767e378f27634c862a1ccc72e8453
   - enabled: 1
-    path: Assets/Scenes/MainMenuAreas/Game Credits.unity
-    guid: 08d64ec1c5945a244a7eec58963ab3ef
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
