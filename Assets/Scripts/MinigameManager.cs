@@ -13,7 +13,7 @@ public class MinigameManager : MonoBehaviour
 
     public void Start()
     {
-        StartMiniGame();
+        //StartMiniGame();
     }
 
     private void Update()
@@ -23,36 +23,54 @@ public class MinigameManager : MonoBehaviour
             EndMinigame();
         }
     }
-    void StartMiniGame()
+    public void StartMiniGame()
     {
+        ResetArray();
         if (manager.Player_One.IsPlayingMinigame == true)
         {
-            players[PlayerAmount] = "player 1";
+            players[PlayerAmount] = "Player_One";
             PlayerAmount++;
         }
         if (manager.Player_Two.IsPlayingMinigame == true)
         {
-            players[PlayerAmount] = "player 2";
+            players[PlayerAmount] = "Player_Two";
             PlayerAmount++;
         }
         if (manager.Player_Three.IsPlayingMinigame == true)
         {
-            players[PlayerAmount] = "player 3";
+            players[PlayerAmount] = "Player_Three";
             PlayerAmount++;
         }
         if (manager.Player_Four.IsPlayingMinigame == true)
         {
-            players[PlayerAmount] = "player 4";
+            players[PlayerAmount] = "Player_four";
             PlayerAmount++;
         }
-        //players.Add("Player 1");
-        //players.Add("Player 2");
+        
 
-        SceneManager.LoadSceneAsync("MiniGame" + miniGameNumber);
+        SceneManager.LoadScene("MiniGame" + miniGameNumber, LoadSceneMode.Additive);
     }
 
-    public void EndMinigame()
+    public void ResetArray()
     {
-        FindObjectOfType<GameManager>().CurrentGameState = GameStates.Board;
+        for (int i = 0; i < 4; i++)
+        {
+            players[i] = null;
+        }
+        PlayerAmount = 0;
+    }
+
+    public static void CollectValuesMiniGame1()
+    {
+        Debug.Log("Working");
+    }
+
+    void EndMinigame()
+    {
+        GameManager manager = FindObjectOfType<GameManager>();
+        if (manager.CurrentGameState == GameStates.Minigame)
+        {
+            manager.CurrentGameState = GameStates.Board;
+        }
     }
 }

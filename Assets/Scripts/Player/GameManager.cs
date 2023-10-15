@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject BoardOnlyUI;
     [SerializeField] private GameObject Non_MinigameStuff;
 
+    [SerializeField] private MinigameManager minigameManager;
+
     [Header("States")]
     public GameStates CurrentGameState;
     [SerializeField] private int CurrentRound = 1;
@@ -342,6 +344,7 @@ public class GameManager : MonoBehaviour
         {
             Minigames_EvenSpaces();
         }
+        minigameManager.StartMiniGame();
     }
 
     void Minigames_OddSpaces()
