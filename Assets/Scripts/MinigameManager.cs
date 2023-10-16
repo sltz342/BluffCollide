@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MinigameManager : MonoBehaviour
 {
     public static string[] players = new string[4];
-    public int miniGameNumber = 1;
+    public int miniGameNumber = Random.Range(1, 2);
     public static int PlayerAmount = 0;
 
     [SerializeField] private GameManager manager;
