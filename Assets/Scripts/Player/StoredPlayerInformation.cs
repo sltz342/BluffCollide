@@ -11,10 +11,10 @@ public class StoredPlayerInformation
 
     [Header("Basic Values")]
     public int OnSpot = 1;
-    public int CurrentShares;
+    public int CurrentShares = 0;
     public int TotalMoney = 500;
 
-    public bool HasRolledThisTurn;
-    public bool IsPlayingMinigame;
+    public bool HasRolledThisTurn = false;
+    public bool IsPlayingMinigame = false;
     public int CurrentBidAmount = 0;
 }
