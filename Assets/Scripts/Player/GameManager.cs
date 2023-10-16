@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,8 +29,10 @@ public class GameManager : MonoBehaviour
     //UI that is only in the Board Phase
     [SerializeField] private GameObject BoardOnlyUI;
     [SerializeField] private GameObject Non_MinigameStuff;
+    [SerializeField] private GameObject WonGameStuff;
 
     [SerializeField] private MinigameManager minigameManager;
+    [SerializeField] private TMP_Text PlayerWonBox;
 
     [Header("States")]
     public GameStates CurrentGameState;
@@ -87,25 +90,25 @@ public class GameManager : MonoBehaviour
         if (CurrentTurn == 1)
         {
             CurrentBidAmountBox.text = "$" +Player_One.CurrentBidAmount.ToString();
-            PlayerMoneyIndicatorBox.text = ("$" + Player_One.TotalMoney.ToString());
+            PlayerMoneyIndicatorBox.text = ("$" + Player_One.TotalMoney.ToString() + " Shares:" + Player_One.CurrentShares.ToString());
         }
 
         if (CurrentTurn == 2)
         {
             CurrentBidAmountBox.text = "$" + Player_Two.CurrentBidAmount.ToString();
-            PlayerMoneyIndicatorBox.text = ("$" + Player_Two.TotalMoney.ToString());
+            PlayerMoneyIndicatorBox.text = ("$" + Player_Two.TotalMoney.ToString() + " Shares:" + Player_Two.CurrentShares.ToString());
         }
 
         if (CurrentTurn == 3)
         {
             CurrentBidAmountBox.text = "$" + Player_Three.CurrentBidAmount.ToString();
-            PlayerMoneyIndicatorBox.text = ("$" + Player_Three.TotalMoney.ToString());
+            PlayerMoneyIndicatorBox.text = ("$" + Player_Three.TotalMoney.ToString() + " Shares:" + Player_Three.CurrentShares.ToString());
         }
 
         if (CurrentTurn == 4)
         {
             CurrentBidAmountBox.text = "$" + Player_Four.CurrentBidAmount.ToString();
-            PlayerMoneyIndicatorBox.text = ("$" + Player_Four.TotalMoney.ToString());
+            PlayerMoneyIndicatorBox.text = ("$" + Player_Four.TotalMoney.ToString() + " Shares:" + Player_Four.CurrentShares.ToString());
         }
 
         //Sets the specific UI to activate deppending on game state
@@ -113,6 +116,7 @@ public class GameManager : MonoBehaviour
         BoardOnlyUI.SetActive(CurrentGameState == GameStates.Board);
 
         Non_MinigameStuff.SetActive(CurrentGameState != GameStates.Minigame);
+        WonGameStuff.SetActive(CurrentGameState == GameStates.GameEnd);
         #endregion
 
         if (CurrentRound % 4 == 0)
@@ -232,7 +236,13 @@ public class GameManager : MonoBehaviour
             CurrentSharesAmmount = Player_Four.CurrentShares;
         }
 
-        Debug.Log("Player " + PlayerWithMostShares.ToString() + " has won the game!");
+        CurrentGameState = GameStates.GameEnd;
+        PlayerWonBox.text = ("Player " + PlayerWithMostShares.ToString() + " has won the game with " + CurrentSharesAmmount.ToString() + " shares!");
+    }
+
+    public void HeadBackToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
     #endregion
 

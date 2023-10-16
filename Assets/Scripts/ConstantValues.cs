@@ -17,5 +17,6 @@ public enum GameStates
     // phase + what minigame is playing
     Board,
     Bidding,
-    Minigame
+    Minigame,
+    GameEnd
 }
