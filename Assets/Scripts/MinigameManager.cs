@@ -21,19 +21,13 @@ public class MinigameManager : MonoBehaviour
     public void Start()
     {
         //StartMiniGame();
-        game_manager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
         if (SceneManager.loadedSceneCount == 1)
         {
-            Debug.Log("Only One Scene Loaded");
             EndMinigame();
-        }
-        else
-        {
-            game_manager.CurrentGameState = GameStates.Minigame;
         }
     }
     public void StartMiniGame()
@@ -128,12 +122,71 @@ public class MinigameManager : MonoBehaviour
             manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + WinPrize;
         }
     }
-    GameManager game_manager;
+    
+    
+    
     void EndMinigame()
     {
-        if (game_manager.CurrentGameState == GameStates.Minigame)
+        GameManager manager = FindObjectOfType<GameManager>();
+        if (manager.CurrentGameState == GameStates.Minigame)
         {
-            game_manager.CurrentGameState = GameStates.Board;
+            manager.CurrentGameState = GameStates.Board;
         }
+    }
+
+    public void CollectValuesMiniGame2(bool player1Won , bool player2Won ,bool player3Won , bool player4Won, int moneyWon)
+    {
+        if (player1Won  == true)
+        {
+            if (players[0] == "Player_One")
+            {
+                manager.Player_One.TotalMoney = manager.Player_One.TotalMoney + moneyWon;
+            }
+            if (players[0] == "Player_Two")
+            {
+                manager.Player_Two.TotalMoney = manager.Player_Two.TotalMoney + moneyWon;
+            }
+            if (players[0] =="Player_Three")
+            {
+                manager.Player_Three.TotalMoney = manager.Player_Three.TotalMoney + moneyWon;
+            }
+            if (players[0] == "Player_Four")
+            {
+                manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + moneyWon;
+            }
+        }
+        if (player2Won == true)
+        {
+            if (players[1] == "Player_Two")
+            {
+                manager.Player_Two.TotalMoney = manager.Player_Two.TotalMoney + moneyWon;
+            }
+            if (players[1] == "Player_Three")
+            {
+                manager.Player_Three.TotalMoney = manager.Player_Three.TotalMoney + moneyWon;
+            }
+            if (players[1] == "Player_Four")
+            {
+                manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + moneyWon;
+            }
+        }
+        if (player3Won == true)
+        {
+            if (players[2] == "Player_Three")
+            {
+                manager.Player_Three.TotalMoney = manager.Player_Three.TotalMoney + moneyWon;
+            }
+            if (players[2] == "Player_Four")
+            {
+                manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + moneyWon;
+            }
+        }
+        if (player4Won == true)
+        {
+            manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + moneyWon;
+        }
+        
+        
+        
     }
 }
