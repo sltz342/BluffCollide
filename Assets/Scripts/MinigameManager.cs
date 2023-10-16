@@ -21,13 +21,19 @@ public class MinigameManager : MonoBehaviour
     public void Start()
     {
         //StartMiniGame();
+        game_manager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
         if (SceneManager.loadedSceneCount == 1)
         {
+            Debug.Log("Only One Scene Loaded");
             EndMinigame();
+        }
+        else
+        {
+            game_manager.CurrentGameState = GameStates.Minigame;
         }
     }
     public void StartMiniGame()
@@ -122,13 +128,12 @@ public class MinigameManager : MonoBehaviour
             manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + WinPrize;
         }
     }
-
+    GameManager game_manager;
     void EndMinigame()
     {
-        GameManager manager = FindObjectOfType<GameManager>();
-        if (manager.CurrentGameState == GameStates.Minigame)
+        if (game_manager.CurrentGameState == GameStates.Minigame)
         {
-            manager.CurrentGameState = GameStates.Board;
+            game_manager.CurrentGameState = GameStates.Board;
         }
     }
 }

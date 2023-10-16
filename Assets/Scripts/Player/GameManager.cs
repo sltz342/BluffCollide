@@ -347,6 +347,7 @@ public class GameManager : MonoBehaviour
             Minigames_EvenSpaces();
         }
         minigameManager.StartMiniGame();
+        CurrentGameState = GameStates.Minigame;
     }
 
     void Minigames_OddSpaces()
