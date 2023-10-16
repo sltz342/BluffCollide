@@ -15,7 +15,6 @@ public class MinigameManager : MonoBehaviour
     //bool Player3Won = false;
     //bool Player4Won = false;
 
-    int WinPrize = 0;
 
 
     public void Start()
