@@ -10,6 +10,13 @@ public class MinigameManager : MonoBehaviour
     public static int PlayerAmount = 0;
 
     [SerializeField] private GameManager manager;
+    //bool Player1Won = false;
+    //bool Player2Won = false;
+    //bool Player3Won = false;
+    //bool Player4Won = false;
+
+    int WinPrize = 0;
+
 
     public void Start()
     {
@@ -60,9 +67,60 @@ public class MinigameManager : MonoBehaviour
         PlayerAmount = 0;
     }
 
-    public static void CollectValuesMiniGame1()
+    public void CollectValuesMiniGame1()
     {
-        Debug.Log("Working");
+        
+
+        int WinPrize = GuessGameManager.WinPrize;
+        if (GuessGameManager.Player1Won == true)
+        {
+            if (players[0] == "Player_One")
+            {
+                manager.Player_One.TotalMoney = manager.Player_One.TotalMoney + WinPrize;
+            }
+            if (players[0] == "Player_Two")
+            {
+                manager.Player_Two.TotalMoney = manager.Player_Two.TotalMoney + WinPrize;
+            }
+            if (players[0] =="Player_Three")
+            {
+                manager.Player_Three.TotalMoney = manager.Player_Three.TotalMoney + WinPrize;
+            }
+            if (players[0] == "Player_Four")
+            {
+                manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + WinPrize;
+            }
+        }
+        if (GuessGameManager.Player2Won == true)
+        {
+            if (players[1] == "Player_Two")
+            {
+                manager.Player_Two.TotalMoney = manager.Player_Two.TotalMoney + WinPrize;
+            }
+            if (players[1] == "Player_Three")
+            {
+                manager.Player_Three.TotalMoney = manager.Player_Three.TotalMoney + WinPrize;
+            }
+            if (players[1] == "Player_Four")
+            {
+                manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + WinPrize;
+            }
+        }
+        if (GuessGameManager.Player3Won == true)
+        {
+            if (players[2] == "Player_Three")
+            {
+                manager.Player_Three.TotalMoney = manager.Player_Three.TotalMoney + WinPrize;
+            }
+            if (players[2] == "Player_Four")
+            {
+                manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + WinPrize;
+            }
+        }
+        if (GuessGameManager.Player4Won == true)
+        {
+            manager.Player_Four.TotalMoney = manager.Player_Four.TotalMoney + WinPrize;
+        }
     }
 
     void EndMinigame()

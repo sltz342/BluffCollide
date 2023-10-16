@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         Non_MinigameStuff.SetActive(CurrentGameState != GameStates.Minigame);
         #endregion
 
-        if (CurrentRound % 5 == 0)
+        if (CurrentRound % 4 == 0)
         {
             CurrentGameState = GameStates.Bidding;
         }
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
             CurrentTurn = 1;
             CurrentRound++;
 
-            if (!(CurrentRound % 5 == 0))
+            if (CurrentRound % 5 != 0)
             {
                 StartMinigame();
             }
@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
             if (CurrentGameState == GameStates.Bidding)
             {
                 CheckWhoWonTheShares();
+
                 CurrentGameState = GameStates.Board;
                 Player_One.CurrentBidAmount = 0;
                 Player_Two.CurrentBidAmount = 0;
@@ -327,6 +328,7 @@ public class GameManager : MonoBehaviour
             Player_Four.CurrentShares++;
             Player_Four.TotalMoney -= Player_Four.CurrentBidAmount;
         }
+
     }
 
     #endregion

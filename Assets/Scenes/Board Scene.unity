@@ -1650,7 +1650,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
-    IsPlayingMinigame: 1
+    IsPlayingMinigame: 0
     CurrentBidAmount: 0
   Player_Two:
     PlayerToken: {fileID: 124594758}
@@ -1659,7 +1659,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
-    IsPlayingMinigame: 1
+    IsPlayingMinigame: 0
     CurrentBidAmount: 0
   Player_Three:
     PlayerToken: {fileID: 1345142769}
@@ -1668,7 +1668,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
-    IsPlayingMinigame: 1
+    IsPlayingMinigame: 0
     CurrentBidAmount: 0
   Player_Four:
     PlayerToken: {fileID: 820026087}
@@ -1677,7 +1677,7 @@ MonoBehaviour:
     CurrentShares: 0
     TotalMoney: 500
     HasRolledThisTurn: 0
-    IsPlayingMinigame: 1
+    IsPlayingMinigame: 0
     CurrentBidAmount: 0
   Board: {fileID: 414943407}
   PlayerNumberIndicatorBox: {fileID: 1804816780}

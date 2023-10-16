@@ -19,6 +19,8 @@ public class GuessGameManager : MonoBehaviour
     bool ThreePlayer = false;
     bool FourPlayer = false;
 
+    [SerializeField] private MinigameManager mManager;
+
     public static bool Player1Won = false;
     public static bool Player2Won = false;
     public static bool Player3Won = false;
@@ -59,6 +61,8 @@ public class GuessGameManager : MonoBehaviour
 
     void SetValues()
     {
+        mManager = FindObjectOfType<MinigameManager>();
+
         Player1Won = false;
         Player2Won = false;
         Player3Won = false;
@@ -108,7 +112,7 @@ public class GuessGameManager : MonoBehaviour
         {
             if (guessNum == 1)
             {
-                MinigameManager.CollectValuesMiniGame1();
+                mManager.CollectValuesMiniGame1();
                 SceneManager.UnloadSceneAsync("MiniGame1");
             }
             product = ranNum - int.Parse(Guess.text);
@@ -143,7 +147,7 @@ public class GuessGameManager : MonoBehaviour
         {
             if (guessNum == 2)
             {
-                MinigameManager.CollectValuesMiniGame1();
+                mManager.CollectValuesMiniGame1();
                 SceneManager.UnloadSceneAsync("MiniGame1");
             }
 
@@ -185,7 +189,7 @@ public class GuessGameManager : MonoBehaviour
         {
             if (guessNum == 3)
             {
-                MinigameManager.CollectValuesMiniGame1();
+                mManager.CollectValuesMiniGame1();
                 SceneManager.UnloadSceneAsync("MiniGame1");
             }
 
@@ -253,9 +257,9 @@ public class GuessGameManager : MonoBehaviour
         }
         if (FourPlayer == true)
         {
-            if (guessNum == 3)
+            if (guessNum == 4)
             {
-                MinigameManager.CollectValuesMiniGame1();
+                mManager.CollectValuesMiniGame1();
                 SceneManager.UnloadSceneAsync("MiniGame1");
             }
 
@@ -379,7 +383,7 @@ public class GuessGameManager : MonoBehaviour
                 }
                 if (Guesses[3] < Guesses[0] && Guesses[3] < Guesses[1] && Guesses[3] < Guesses[2])
                 {
-                    GameText.text = "The answer was " + ranNum + ", " + players[2] + " wins 250";
+                    GameText.text = "The answer was " + ranNum + ", " + players[3] + " wins 250";
                     Player4Won = true;
                     WinPrize = 250;
                 }
